@@ -12,8 +12,33 @@ public class CrazyEights {
 		}
 		String displayHand = "";
 		for(Card item: playerHand){
-			displayHand += "\n" + item;
+			displayHand += "+-----+";
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+			displayHand += "|     | "; 
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+			if (item.face.length() == 2) {
+				displayHand += "|  " + item.face + " | ";
+			} else {
+				displayHand += "| " + item.face + " | ";
+			}
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "|  " + item.suit.charAt(0) + "  | ";
+			}
+		displayHand += "\n";
+			for(Card item: playerHand){
+    			displayHand += "|     | ";
+			}
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "+-----+ ";
 		}
 		System.out.println(displayHand);
+
 	}
 }
