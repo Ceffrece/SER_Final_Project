@@ -12,9 +12,9 @@ public class DeckOfCards {
 
    // constructor fills deck of Cards
    public DeckOfCards() {
-      String[] faces = {"Ace", "Deuce", "Three", "Four", "Five", "Six",
-         "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};    
-      String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};      
+      String[] faces = {"A", "2", "3", "4", "5", "6",
+         "7", "8", "9", "10", "J", "Q", "K"};    
+      String[] suits = {"♥", "♦", "♣", "♠"};      
 
       // populate deck with Card objects                   
       for (int count = 0; count < deck.length; count++) {  
