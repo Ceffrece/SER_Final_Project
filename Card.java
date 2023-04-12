@@ -14,7 +14,14 @@ public class Card {
     // return String representation of Card
     public String toString() {             
        return face + " of " + suit;        
-    }                
+    }
+    
+    //displays card
+    public void display(){
+      System.out.println("---------");
+      System.out.println("|...." + this.face + "....|");
+      System.out.println("|.........|");
+    }
  } 
  
  
