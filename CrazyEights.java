@@ -23,6 +23,7 @@ public class CrazyEights {
 			player1Hand.add(deck.dealCard());
 			player2Hand.add(deck.dealCard());
 		}
+<<<<<<< HEAD
 		while(!(player1Hand.isEmpty()) || !(player2Hand.isEmpty())){
 			Card faceUp = deck.dealCard();
 			boolean playedCard = false;
@@ -36,5 +37,67 @@ public class CrazyEights {
 				
 			}
 		}
+
+		//DisplayHand Function
+		String displayHand = "";
+		for(Card item: playerHand){
+    		displayHand += "+-----+ ";
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "|     | ";
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+			String face = item.face;
+            if (face.length() == 1) {
+                face = " " + face; 
+            }
+            displayHand += "|  " + face + " | ";
+        }
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "|  " + item.suit.charAt(0) + "  | ";
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "|     | ";
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "+-----+ ";
+		}
+			System.out.println(displayHand);
+=======
+		String displayHand = "";
+		for(Card item: playerHand){
+    		displayHand += "+-----+ ";
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "|     | ";
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+			String face = item.face;
+            if (face.length() == 1) {
+                face = " " + face; 
+            }
+            displayHand += "|  " + face + " | ";
+        }
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "|  " + item.suit.charAt(0) + "  | ";
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "|     | ";
+		}
+		displayHand += "\n";
+		for(Card item: playerHand){
+    		displayHand += "+-----+ ";
+		}
+			System.out.println(displayHand);
+>>>>>>> 8b98df9a8b60a6ab575b659ced6b9980053329df
 	}
 }
