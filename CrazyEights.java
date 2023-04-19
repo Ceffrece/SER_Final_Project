@@ -90,7 +90,7 @@ public class CrazyEights {
         }
 		displayCard += "|  " + face + " | ";
 		displayCard += "\n";
-		displayCard += "|  " + card.suit.charAt(0) + "  | ";
+		displayCard += "|  " + card.getSuitIcon() + "  | ";
 		displayCard += "\n";
 		displayCard += "|     | ";
 		displayCard += "\n";
@@ -118,7 +118,7 @@ public class CrazyEights {
         }
 		displayHand += "\n";
 		for(Card item: playerHand){
-    		displayHand += "|  " + item.suit.charAt(0) + "  | ";
+    		displayHand += "|  " + item.getSuitIcon() + "  | ";
 		}
 		displayHand += "\n";
 		for(Card item: playerHand){

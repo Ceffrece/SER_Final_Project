@@ -14,7 +14,7 @@ public class DeckOfCards {
    public DeckOfCards() {
       String[] faces = {"A", "2", "3", "4", "5", "6",
          "7", "8", "9", "10", "J", "Q", "K"};    
-      String[] suits = {"♥", "♦", "♣", "♠"};      
+      String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};      
 
       // populate deck with Card objects                   
       for (int count = 0; count < deck.length; count++) {  
