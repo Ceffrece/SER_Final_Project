@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CrazyEights {
 	public static boolean isCardPlayable(Card card, Card faceUp){
@@ -30,24 +31,46 @@ public class CrazyEights {
 		Card faceUp = deck.dealCard();
 
 		while(!(player1Hand.isEmpty()) || !(player2Hand.isEmpty())){
-			boolean playedCard = false;
+			boolean playedCard1 = false;
+			boolean playedCard2 = false;
+
+			//Player 1 Turn
 			for(Card card: player1Hand){
 				if(isCardPlayable(card,faceUp)){
-					playedCard = true;
+					playedCard1 = true;
 				}
 			}
-			if(playedCard){
+			if(playedCard1){
+				System.out.println("Face Up Card: ");
+				displayCard(faceUp);
 				CrazyEights.displayHand(player1Hand);
-				playCard();
+				playCard(player1Hand);
 			}
 			else{
-				System.out.println("You cannot play a card. Drawing a card.")
+				System.out.println("You cannot play a card. Drawing a card.");
+				player1Hand.add(deck.dealCard());
+			}
+
+			//Player 2 Turn
+			for(Card card: player2Hand){
+				if(isCardPlayable(card,faceUp)){
+					playedCard2 = true;
+				}
+			}
+			if(playedCard2){
+				System.out.println("Face Up Card: ");
+				displayCard(faceUp);
+				CrazyEights.displayHand(player2Hand);
+				playCard(player2Hand);
 			}
 		}
 	}
 
-	public static void playCard() {
+	public static void playCard(ArrayList<Card> playerHand) {
 		System.out.println("Please pick a card in your hand to play");
+		Scanner scan = new Scanner(System.in);
+		int removeIndex = scan.nextInt();
+		playerHand.remove(removeIndex - 1);
 	}
 
 
