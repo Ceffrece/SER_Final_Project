@@ -48,7 +48,7 @@ public class CrazyEights {
 				System.out.println("Face Up Card: ");
 				displayCard(faceUp);
 				CrazyEights.displayHand(player1Hand);
-				playCard(player1Hand);
+				faceUp = playCard(player1Hand);
 			}
 			else{
 				System.out.println("You cannot play a card. Drawing a card.");
@@ -65,7 +65,7 @@ public class CrazyEights {
 				System.out.println("Face Up Card: ");
 				displayCard(faceUp);
 				CrazyEights.displayHand(player2Hand);
-				playCard(player2Hand);
+				faceUp = playCard(player2Hand);
 			}
 		}
 	}
