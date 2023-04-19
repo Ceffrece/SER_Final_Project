@@ -68,6 +68,13 @@ public class CrazyEights {
 				faceUp = playCard(player2Hand);
 			}
 		}
+
+		if(player1Hand.isEmpty()){
+			System.out.println("Player 1 Wins!");
+		}
+		else if(player2Hand.isEmpty()){
+			System.out.println("Player 2 Wins!");
+		}
 	}
 // GETS USER INPUT AND REMOVES HAND
 	public static Card playCard(ArrayList<Card> playerHand) {
@@ -76,7 +83,7 @@ public class CrazyEights {
 		int removeIndex = scan.nextInt();
 		Card playedCard = playerHand.get(removeIndex - 1);
 		playerHand.remove(removeIndex - 1);
-		if(playedCard.getFace().equals("Eight")){
+		if(playedCard.getFace().equals("8")){
 			System.out.println("CRAZY EIGHT!!! PICK A SUIT!!!!");
 			System.out.println("1. Hearts");
 			System.out.println("2. Diamonds");
