@@ -3,7 +3,7 @@
 
 public class Card {
     final String face; // face of card ("Ace", "Deuce", ...)
-    final String suit; // suit of card ("Hearts", "Diamonds", ...)
+    String suit; // suit of card ("Hearts", "Diamonds", ...)
  
     // two-argument constructor initializes card's face and suit
     public Card(String cardFace, String cardSuit) {
@@ -47,6 +47,11 @@ public class Card {
       System.out.println("---------");
       System.out.println("|...." + this.face + "....|");
       System.out.println("|.........|");
+    }
+
+    //changes the suit of the card (ONLY FOR EIGHTS)
+    public void setSuit(String suit){
+      this.suit = suit;
     }
  } 
  

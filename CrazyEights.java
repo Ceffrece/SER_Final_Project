@@ -70,11 +70,37 @@ public class CrazyEights {
 		}
 	}
 // GETS USER INPUT AND REMOVES HAND
-	public static void playCard(ArrayList<Card> playerHand) {
+	public static Card playCard(ArrayList<Card> playerHand) {
 		System.out.println("Please pick a card in your hand to play");
 		Scanner scan = new Scanner(System.in);
 		int removeIndex = scan.nextInt();
+		Card playedCard = playerHand.get(removeIndex - 1);
 		playerHand.remove(removeIndex - 1);
+		if(playedCard.getFace().equals("Eight")){
+			System.out.println("CRAZY EIGHT!!! PICK A SUIT!!!!");
+			System.out.println("1. Hearts");
+			System.out.println("2. Diamonds");
+			System.out.println("3. Clubs");
+			System.out.println("4. Spades");
+			Scanner suitChange = new Scanner(System.in);
+			int suitChangeNum = suitChange.nextInt();
+			if(suitChangeNum == 1){
+				playedCard.setSuit("Hearts");
+			}
+			else if(suitChangeNum == 2){
+				playedCard.setSuit("Diamonds");
+			}
+			else if(suitChangeNum == 3){
+				playedCard.setSuit("Clubs");
+			}
+			else if(suitChangeNum == 4){
+				playedCard.setSuit("Spades");
+			}
+			else{
+				System.out.println("Not a valid option");
+			}
+		}
+		return playedCard;
 	}
 
 //DISPLAY FACE UP CARD 
