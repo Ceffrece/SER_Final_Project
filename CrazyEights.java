@@ -76,5 +76,6 @@ public class CrazyEights {
 		for(Card item: playerHand){
     		displayHand += "+-----+ ";
 		}
+		System.out.println(displayHand);
 	}
 }
