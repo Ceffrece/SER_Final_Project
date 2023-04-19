@@ -33,17 +33,42 @@ public class CrazyEights {
 			boolean playedCard = false;
 			for(Card card: player1Hand){
 				if(isCardPlayable(card,faceUp)){
-					CrazyEights.displayHand(player1Hand);
 					playedCard = true;
 				}
 			}
 			if(playedCard){
-				break;
+				CrazyEights.displayHand(player1Hand);
+				playCard();
 			}
 			else{
-				
+				System.out.println("You cannot play a card. Drawing a card.")
 			}
 		}
+	}
+
+	public static void playCard() {
+		System.out.println("Please pick a card in your hand to play");
+	}
+
+
+	public static void displayCard(Card card){
+		String displayCard = "";
+		displayCard += "+-----+ ";
+		displayCard += "\n";
+		displayCard += "|     | ";
+		displayCard += "\n";
+		String face = card.face;
+        if (face.length() == 1) {
+            face = " " + face; 
+        }
+		displayCard += "|  " + face + " | ";
+		displayCard += "\n";
+		displayCard += "|  " + card.suit.charAt(0) + "  | ";
+		displayCard += "\n";
+		displayCard += "|     | ";
+		displayCard += "\n";
+		displayCard += "+-----+ ";
+		System.out.println(displayCard);
 	}
 
 	public static void displayHand(ArrayList<Card> playerHand){
