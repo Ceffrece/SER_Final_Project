@@ -1,8 +1,2 @@
-1. Code the fricking game
-    a. Getting hands
-    b. Drawing cards
-    c. Checking if cards are playable
-    d. Win conditions
-2. Work on ACII Printouts of the cards
-3. Add extra game elements (i.e a start thing, names, etc.)
-4. Single Player option if time
+1. Add extra game elements (i.e a start thing, names, etc.)
+2. Single Player option if time

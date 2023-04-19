@@ -34,11 +34,12 @@ public class CrazyEights {
 		Card faceUp = deck.dealCard();
 
 		//Game loop that makes the game run
-		while(!(player1Hand.isEmpty()) || !(player2Hand.isEmpty())){
+		while(!(player1Hand.isEmpty()) && !(player2Hand.isEmpty())){
 			boolean playedCard1 = false;
 			boolean playedCard2 = false;
 
 			//Player 1 Turn
+			System.out.println("Player 1 Turn!!");
 			for(Card card: player1Hand){
 				if(isCardPlayable(card,faceUp)){
 					playedCard1 = true;
@@ -56,6 +57,7 @@ public class CrazyEights {
 			}
 
 			//Player 2 Turn
+			System.out.println("Player 2 Turn!!");
 			for(Card card: player2Hand){
 				if(isCardPlayable(card,faceUp)){
 					playedCard2 = true;
@@ -66,6 +68,10 @@ public class CrazyEights {
 				displayCard(faceUp);
 				CrazyEights.displayHand(player2Hand);
 				faceUp = playCard(player2Hand);
+			}
+			else{
+				System.out.println("You cannot play a card. Drawing a card.");
+				player2Hand.add(deck.dealCard());
 			}
 		}
 
