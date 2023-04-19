@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CrazyEights {
+
+	// Checks if the card is playable 
 	public static boolean isCardPlayable(Card card, Card faceUp){
 		if(faceUp.getFace().equals(card.getFace()) || faceUp.getSuit().equals(card.getSuit())){
 			return true;
@@ -14,22 +16,24 @@ public class CrazyEights {
 		}
 	}
 	public static void main(String[] args) {
+		// display start game 
 		System.out.println("Welcome to Crazy Eights!!");
 		ArrayList<Card> player1Hand = new ArrayList<Card>();
 		ArrayList<Card> player2Hand = new ArrayList<Card>();
 
 		System.out.println("Game Start");
-
+		//	calls DeckOfCards function
 		DeckOfCards deck = new DeckOfCards();
 		deck.shuffle();
-
+		//Deals 5 cards to each player 
 		for(int count = 0; count < 5; count++){
 			player1Hand.add(deck.dealCard());
 			player2Hand.add(deck.dealCard());
 		}
-
+		//Current faceUp card 
 		Card faceUp = deck.dealCard();
 
+		//Game loop that makes the game run
 		while(!(player1Hand.isEmpty()) || !(player2Hand.isEmpty())){
 			boolean playedCard1 = false;
 			boolean playedCard2 = false;
@@ -65,7 +69,7 @@ public class CrazyEights {
 			}
 		}
 	}
-
+// GETS USER INPUT AND REMOVES HAND
 	public static void playCard(ArrayList<Card> playerHand) {
 		System.out.println("Please pick a card in your hand to play");
 		Scanner scan = new Scanner(System.in);
@@ -73,7 +77,7 @@ public class CrazyEights {
 		playerHand.remove(removeIndex - 1);
 	}
 
-
+//DISPLAY FACE UP CARD 
 	public static void displayCard(Card card){
 		String displayCard = "";
 		displayCard += "+-----+ ";
@@ -93,7 +97,7 @@ public class CrazyEights {
 		displayCard += "+-----+ ";
 		System.out.println(displayCard);
 	}
-
+// DISPLAYS PLAYERS HAND 
 	public static void displayHand(ArrayList<Card> playerHand){
 		//DisplayHand Function
 		String displayHand = "";
