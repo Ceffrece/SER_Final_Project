@@ -19,23 +19,21 @@ public class Card {
       return this.suit;
     }
 
-    public char getSuitIcon() {
-      char ch = ' ';
-      if(this.suit.equals("Hearts")){
-        ch = 3;
+    public String getSuitIcon() {
+      switch (this.suit) {
+          case "Hearts":
+              return "\u2665";
+          case "Diamonds":
+              return "\u2666";
+          case "Clubs":
+              return "\u2663";
+          case "Spades":
+              return "\u2660";
+          default:
+              return "";
       }
-      else if(this.suit.equals("Diamonds")){
-        ch = 4;
-      } 
-      else if(this.suit.equals("Clubs")){
-        ch = 5;
-      }
-      else if(this.suit.equals("Spades")){
-        ch = 6;
-      }
-      return ch;
-
-    }
+  }
+  
 
     // return String representation of Card
     public String toString() {             
