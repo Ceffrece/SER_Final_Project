@@ -27,7 +27,7 @@ public class CrazyEights {
 		System.out.println(" \\ \\/\\/ /| _|| |__| (_| (_) | |\\/| | _|    | |  | (_) |  | (__|   /  / _ \\  / /  \\ V /  | _| | |   | (_ | __ |  | | \\__ \\)\\     ");
 		System.out.println("  \\_/\\_/ |___|____|\\___\\___/|_|  |_|___|   |_|   \\___/    \\___|_|_\\ /_/ \\_\\/___|  |_|   |___|___|   \\___|_||_|  |_| |___((_)    ");
 		System.out.println();
-
+		Thread.sleep(2000);
 		//Displays Team Name
 		System.out.println("   ____   __   __       ____    ____        _       _____   __   __       ____   U  ___ u  ____  U _____ u   ____     ____     ");
 		System.out.println("U | __\")u \\ \\ / /    U /\"___|U |  _\"\\ u U  /\"\\  u  |\"_  /u  \\ \\ / /    U /\"___|   \\/\"_ \\/ |  _\"\\ \\| ___\"|/U |  _\"\\ u / __\"| u  ");
@@ -37,7 +37,8 @@ public class CrazyEights {
 		System.out.println(" _|| \\\\_.-,//|(_      _// \\\\   //   \\\\_  \\\\    >>  _//<<,-.-,//|(_      _// \\\\      \\\\     |||_   <<   >>   //   \\\\_  )(  (__) ");
 		System.out.println("(__) (__)\\_) (__)    (__)(__) (__)  (__)(__)  (__)(__) (_/ \\_) (__)    (__)(__)    (__)   (__)_) (__) (__) (__)  (__)(__)      ");
 		System.out.println();
-
+		
+		Thread.sleep(2000);
 		//Displays the press enter to start
 		System.out.println(" _______ _______ _______  _______ _______    _______ _      ________________ _______   ________________    _______________________ ________________");
 		System.out.println("(  ____ |  ____ |  ____ \\(  ____ (  ____ \\  (  ____ ( (    /\\__   __(  ____ (  ____ )  \\__   __(  ___  )  (  ____ \\__   __(  ___  |  ____ )__   __/");
@@ -48,7 +49,6 @@ public class CrazyEights {
 		System.out.println("| )     | ) \\ \\_| (____/\\/\\____) /\\____) |  | (____/\\ )  \\  |  | |  | (____/\\ ) \\ \\__     | |  | (___) |  /\\____) |  | |  | )   ( | ) \\ \\__  | |   ");
 		System.out.println("|/      |/   \\__(_______/\\_______)_______)  (_______//    )_)  )_(  (_______//   \\__/     )_(  (_______)  \\_______)  )_(  |/     \\|/   \\__/  )_(   ");
 		System.out.println();
-
 		//Initializes hands as empty ArrayLists
 		ArrayList<Card> player1Hand = new ArrayList<Card>();
 		ArrayList<Card> player2Hand = new ArrayList<Card>();
