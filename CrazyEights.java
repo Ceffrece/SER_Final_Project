@@ -57,7 +57,7 @@ public class CrazyEights {
 				System.out.println("Face Up Card: ");
 				displayCard(faceUp);
 				CrazyEights.displayHand(player1Hand);
-				faceUp = playCard(player1Hand);
+				faceUp = playCard(player1Hand, faceUp);
 			}
 			else{
 				System.out.println("You cannot play a card. Drawing a card.");
@@ -76,7 +76,7 @@ public class CrazyEights {
 				System.out.println("Face Up Card: ");
 				displayCard(faceUp);
 				CrazyEights.displayHand(player2Hand);
-				faceUp = playCard(player2Hand);
+				faceUp = playCard(player2Hand, faceUp);
 			}
 			else{
 				System.out.println("You cannot play a card. Drawing a card.");
@@ -92,11 +92,22 @@ public class CrazyEights {
 		}
 	}
 // GETS USER INPUT AND REMOVES HAND
-	public static Card playCard(ArrayList<Card> playerHand) {
-		System.out.println("Please pick a card in your hand to play");
-		Scanner scan = new Scanner(System.in);
-		int removeIndex = scan.nextInt();
-		Card playedCard = playerHand.get(removeIndex - 1);
+	public static Card playCard(ArrayList<Card> playerHand, Card faceUp) {
+		int removeIndex;
+		Card playedCard;
+		while(true){
+			System.out.println("Please pick a card in your hand to play");
+			Scanner scan = new Scanner(System.in);
+			removeIndex = scan.nextInt();
+			playedCard = playerHand.get(removeIndex - 1);
+			if(isCardPlayable(playedCard, faceUp)){
+				break;
+			}
+			else{
+				System.out.println("That card is not legally playable. Please choose another.");
+			}
+		}
+		
 		playerHand.remove(removeIndex - 1);
 		if(playedCard.getFace().equals("8")){
 			System.out.println("CRAZY EIGHT!!! PICK A SUIT!!!!");
