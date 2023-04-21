@@ -19,8 +19,8 @@ public class Card {
       return this.suit;
     }
 
-    public String getSuitIcon() {
-      switch (this.suit) {
+    public char getSuitIcon() {
+      /*switch (this.suit) {
           case "Hearts":
               return "\u2665";
           case "Diamonds":
@@ -31,7 +31,21 @@ public class Card {
               return "\u2660";
           default:
               return "";
+      }*/
+      char ch = ' ';
+      if(this.suit.equals("Hearts")){
+        ch = 3;
       }
+      else if(this.suit.equals("Diamonds")){
+        ch = 4;
+      }
+      else if(this.suit.equals("Clubs")){
+        ch = 5;
+      }
+      else if(this.suit.equals("Spades")){
+        ch = 6;
+      }
+      return ch;
   }
   
 
