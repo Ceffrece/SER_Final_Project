@@ -37,7 +37,7 @@ public class CrazyEights {
 		System.out.println(" _|| \\\\_.-,//|(_      _// \\\\   //   \\\\_  \\\\    >>  _//<<,-.-,//|(_      _// \\\\      \\\\     |||_   <<   >>   //   \\\\_  )(  (__) ");
 		System.out.println("(__) (__)\\_) (__)    (__)(__) (__)  (__)(__)  (__)(__) (_/ \\_) (__)    (__)(__)    (__)   (__)_) (__) (__) (__)  (__)(__)      ");
 		System.out.println();
-		
+
 		Thread.sleep(2000);
 		//Displays the press enter to start
 		System.out.println(" _______ _______ _______  _______ _______    _______ _      ________________ _______   ________________    _______________________ ________________");
@@ -49,6 +49,10 @@ public class CrazyEights {
 		System.out.println("| )     | ) \\ \\_| (____/\\/\\____) /\\____) |  | (____/\\ )  \\  |  | |  | (____/\\ ) \\ \\__     | |  | (___) |  /\\____) |  | |  | )   ( | ) \\ \\__  | |   ");
 		System.out.println("|/      |/   \\__(_______/\\_______)_______)  (_______//    )_)  )_(  (_______//   \\__/     )_(  (_______)  \\_______)  )_(  |/     \\|/   \\__/  )_(   ");
 		System.out.println();
+
+		Scanner enterToStart = new Scanner(System.in);
+		enterToStart.nextLine();
+
 		//Initializes hands as empty ArrayLists
 		ArrayList<Card> player1Hand = new ArrayList<Card>();
 		ArrayList<Card> player2Hand = new ArrayList<Card>();
