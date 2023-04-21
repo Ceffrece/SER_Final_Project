@@ -15,7 +15,7 @@ public class CrazyEights {
 			return false;
 		}
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException{
 		// display start game 
 		System.out.println("Welcome to Crazy Eights!!");
 		ArrayList<Card> player1Hand = new ArrayList<Card>();
@@ -33,13 +33,21 @@ public class CrazyEights {
 		//Current faceUp card 
 		Card faceUp = deck.dealCard();
 
+		//Player Names
+		Scanner nameIn = new Scanner(System.in);
+		System.out.println("Input Player 1's Name: ");
+		String player1 = nameIn.nextLine();
+		System.out.println("Input Player 2's Name: ");
+		String player2 = nameIn.nextLine();
+
 		//Game loop that makes the game run
 		while(!(player1Hand.isEmpty()) && !(player2Hand.isEmpty())){
 			boolean playedCard1 = false;
 			boolean playedCard2 = false;
 
+			Thread.sleep(1000);//Sleep function for some time in between players to not make everything seem instant
 			//Player 1 Turn
-			System.out.println("Player 1 Turn!!");
+			System.out.println(player1 + "'s' Turn!!");
 			for(Card card: player1Hand){
 				if(isCardPlayable(card,faceUp)){
 					playedCard1 = true;
@@ -49,15 +57,16 @@ public class CrazyEights {
 				System.out.println("Face Up Card: ");
 				displayCard(faceUp);
 				CrazyEights.displayHand(player1Hand);
-				faceUp = playCard(player1Hand);
+				faceUp = playCard(player1Hand, faceUp);
 			}
 			else{
 				System.out.println("You cannot play a card. Drawing a card.");
 				player1Hand.add(deck.dealCard());
 			}
+			Thread.sleep(1000);
 
 			//Player 2 Turn
-			System.out.println("Player 2 Turn!!");
+			System.out.println(player2 + "'s' Turn!!");
 			for(Card card: player2Hand){
 				if(isCardPlayable(card,faceUp)){
 					playedCard2 = true;
@@ -67,7 +76,7 @@ public class CrazyEights {
 				System.out.println("Face Up Card: ");
 				displayCard(faceUp);
 				CrazyEights.displayHand(player2Hand);
-				faceUp = playCard(player2Hand);
+				faceUp = playCard(player2Hand, faceUp);
 			}
 			else{
 				System.out.println("You cannot play a card. Drawing a card.");
@@ -83,11 +92,22 @@ public class CrazyEights {
 		}
 	}
 // GETS USER INPUT AND REMOVES HAND
-	public static Card playCard(ArrayList<Card> playerHand) {
-		System.out.println("Please pick a card in your hand to play");
-		Scanner scan = new Scanner(System.in);
-		int removeIndex = scan.nextInt();
-		Card playedCard = playerHand.get(removeIndex - 1);
+	public static Card playCard(ArrayList<Card> playerHand, Card faceUp) {
+		int removeIndex;
+		Card playedCard;
+		while(true){
+			System.out.println("Please pick a card in your hand to play");
+			Scanner scan = new Scanner(System.in);
+			removeIndex = scan.nextInt();
+			playedCard = playerHand.get(removeIndex - 1);
+			if(isCardPlayable(playedCard, faceUp)){
+				break;
+			}
+			else{
+				System.out.println("That card is not legally playable. Please choose another.");
+			}
+		}
+		
 		playerHand.remove(removeIndex - 1);
 		if(playedCard.getFace().equals("8")){
 			System.out.println("CRAZY EIGHT!!! PICK A SUIT!!!!");
@@ -166,6 +186,13 @@ public class CrazyEights {
 		displayHand += "\n";
 		for(Card item: playerHand){
     		displayHand += "+-----+ ";
+		}
+		displayHand += "\n";
+		int cardNum = 1;
+		for(Card item: playerHand){
+			displayHand += cardNum;
+			displayHand += "       ";
+			cardNum++;
 		}
 		System.out.println(displayHand);
 	}
