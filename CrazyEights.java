@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 public class CrazyEights {
 
 	// Checks if the card is playable 
@@ -13,7 +15,7 @@ public class CrazyEights {
 		}
 		else{
 			return false;
-		}
+		} 
 	}
 	public static void main(String[] args) throws InterruptedException{
 		// display start game 
@@ -52,6 +54,37 @@ public class CrazyEights {
 
 		Scanner enterToStart = new Scanner(System.in);
 		enterToStart.nextLine();
+
+		Thread.sleep(2000);
+		System.out.println("\t\t\t\t\t\t _______  _______  _______  _______    _______  _______  _                ");
+		System.out.println("\t\t\t\t\t\t(  ____ \\(  ___  )(       )(  ____ \\  (       )(  ____ \\( (    /||\\     /|");
+		System.out.println("\t\t\t\t\t\t| (    \\/| (   ) || () () || (    \\/  | () () || (    \\/|  \\  ( || )   ( |");
+		System.out.println("\t\t\t\t\t\t| |      | (___) || || || || (__      | || || || (__    |   \\ | || |   | |");
+		System.out.println("\t\t\t\t\t\t| | ____ |  ___  || |(_)| ||  __)     | |(_)| ||  __)   | (\\ \\) || |   | |");
+		System.out.println("\t\t\t\t\t\t| | \\_  )| (   ) || |   | || (        | |   | || (      | | \\   || |   | |");
+		System.out.println("\t\t\t\t\t\t| (___) || )   ( || )   ( || (____/\\  | )   ( || (____/\\| )  \\  || (___) |");
+		System.out.println("\t\t\t\t\t\t(_______)|/     \\||/     \\|(_______/  |/     \\|(_______/|/    )_)(_______)");
+		
+		Thread.sleep(1000);
+
+		System.out.println("\t\t\t\t ____ ____ __   ____ ___ ____    _  _ __  _  _ ____     ___  __  _  _ ____    _  _  __ ____ ____ ");
+		System.out.println("\t\t\t\t/ ___(  __(  ) (  __/ __(_  _)  ( \\/ /  \\/ )( (  _ \\   / __)/ _\\( \\/ (  __)  ( \\/ )/  (    (  __)");
+		System.out.println("\t\t\t\t\\___ \\) _)/ (_/\\) _( (__  )(     )  (  O ) \\/ ()   /  ( (_ /    / \\/ \\) _)   / \\/ (  O ) D () _) ");
+		System.out.println("\t\t\t\t(____(____\\____(____\\___)(__)   (__/ \\__/\\____(__\\_)   \\___\\_/\\_\\_)(_(____)  \\_)(_/\\__(____(____)");
+		
+		Thread.sleep(1000);
+		
+		System.out.println("\t\t\t\t\t\t\t .----------------.             .----------------. ");
+		System.out.println("\t\t\t\t\t\t\t| .--------------. |            | .--------------. |");
+		System.out.println("\t\t\t\t\t\t\t| |     __       | |            | |    _____     | |");
+		System.out.println("\t\t\t\t\t\t\t| |    /  |      | |            | |   / ___ `.   | |");
+		System.out.println("\t\t\t\t\t\t\t| |    `| |      | |            | |  |_/___) |   | |");
+		System.out.println("\t\t\t\t\t\t\t| |     | |      | |            | |   .'____.'   | |");
+		System.out.println("\t\t\t\t\t\t\t| |    _| |_     | |            | |  / /____     | |");
+		System.out.println("\t\t\t\t\t\t\t| |   |_____|    | |            | |  |_______|   | |");
+		System.out.println("\t\t\t\t\t\t\t| |              | |            | |              | |");
+		System.out.println("\t\t\t\t\t\t\t| '--------------' |            | '--------------' |");
+		System.out.println("\t\t\t\t\t\t\t '----------------'              '----------------' ");
 
 		//Initializes hands as empty ArrayLists
 		ArrayList<Card> player1Hand = new ArrayList<Card>();
