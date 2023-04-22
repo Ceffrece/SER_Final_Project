@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
+
 
 public class CrazyEights {
 
@@ -160,10 +160,10 @@ public class CrazyEights {
 			}
 
 			if(player1Hand.isEmpty()){
-				System.out.println("Player 1 Wins!");
+				System.out.println(player1 + "Wins!");
 			}
 			else if(player2Hand.isEmpty()){
-				System.out.println("Player 2 Wins!");
+				System.out.println(player2 + " Wins!");
 			}
 		}
 	}
