@@ -232,12 +232,14 @@ public class CrazyEights {
 	}
 	
 	public static Card playCardCPU(ArrayList<Card> hand, Card faceUp){
+		Card dummyCard = hand.get(1);
 		for(Card card : hand){
 			if(isCardPlayable(card,faceUp)){
+				hand.remove(card);
 				return card;
 			}
 		}
-		return faceUp;
+		return dummyCard;
 	}
 
 	public static void displayCPUHand(ArrayList<Card> hand){
