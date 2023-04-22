@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 public class CrazyEights {
 
 	// Checks if the card is playable 
@@ -89,7 +87,72 @@ public class CrazyEights {
 		int gameChoice = enterToStart.nextInt();
 
 		if(gameChoice == 1){
-			
+			ArrayList<Card> playerHand = new ArrayList<Card>();
+			ArrayList<Card> computerHand = new ArrayList<Card>();
+
+			System.out.println("Game Start");
+			//	calls DeckOfCards function
+			DeckOfCards deck = new DeckOfCards();
+			deck.shuffle();
+			//Deals 5 cards to player and computer
+			for(int count = 0; count < 5; count++){
+				playerHand.add(deck.dealCard());
+				computerHand.add(deck.dealCard());
+			}
+			//Current faceUp card 
+			Card faceUp = deck.dealCard();
+
+			while(!(playerHand.isEmpty()) && !(computerHand.isEmpty())){
+				boolean playedCard1 = false;
+				boolean playedCard2 = false;
+
+				Thread.sleep(1000);//Sleep function for some time in between players to not make everything seem instant
+
+				//Player Turn
+				System.out.println("Your Turn!!");
+				for(Card card: playerHand){
+					if(isCardPlayable(card,faceUp)){
+						playedCard1 = true;
+					}
+				}
+				if(playedCard1){
+					System.out.println("Face Up Card: ");
+					displayCard(faceUp);
+					CrazyEights.displayHand(playerHand);
+					faceUp = playCard(playerHand, faceUp);
+				}
+				else{
+					System.out.println("You cannot play a card. Drawing a card.");
+					playerHand.add(deck.dealCard());
+				}
+				Thread.sleep(1000);
+
+				//Computer Turn
+				System.out.println("CPU Turn!!");
+				for(Card card: computerHand){
+					if(isCardPlayable(card,faceUp)){
+						playedCard2 = true;
+					}
+				}
+				if(playedCard2){
+					System.out.println("Face Up Card: ");
+					displayCard(faceUp);
+					CrazyEights.displayCPUHand(computerHand);
+					faceUp = playCardCPU(computerHand, faceUp);
+				}
+				else{
+					System.out.println("CPU cannot play a card. Drawing a card.");
+					computerHand.add(deck.dealCard());
+				}
+			}
+
+			if(playerHand.isEmpty()){
+				System.out.println("Player 1 Wins!");
+			}
+			else if(computerHand.isEmpty()){
+				System.out.println("Computer Wins!");
+			}
+
 		}
 		else{
 			//Initializes hands as empty ArrayLists
@@ -167,7 +230,43 @@ public class CrazyEights {
 			}
 		}
 	}
-		
+	
+	public static Card playCardCPU(ArrayList<Card> hand, Card faceUp){
+		for(Card card : hand){
+			if(isCardPlayable(card,faceUp)){
+				return card;
+			}
+		}
+		return faceUp;
+	}
+
+	public static void displayCPUHand(ArrayList<Card> hand){
+		String displayHand = "";
+		for(Card item: hand){
+    		displayHand += "+-----+ ";
+		}
+		displayHand += "\n";
+		for(Card item: hand){
+    		displayHand += "|+++++| ";
+		}
+		displayHand += "\n";
+		for(Card item: hand){
+            displayHand += "|+++++| ";
+        }
+		displayHand += "\n";
+		for(Card item: hand){
+    		displayHand += "|+++++| ";
+		}
+		displayHand += "\n";
+		for(Card item: hand){
+    		displayHand += "|+++++| ";
+		}
+		displayHand += "\n";
+		for(Card item: hand){
+    		displayHand += "+-----+ ";
+		}
+	}
+
 // GETS USER INPUT AND REMOVES HAND
 	public static Card playCard(ArrayList<Card> playerHand, Card faceUp) {
 		int removeIndex;
