@@ -147,7 +147,7 @@ public class CrazyEights {
 			}
 
 			if(playerHand.isEmpty()){
-				System.out.println("Player 1 Wins!");
+				System.out.println("You Win!");
 			}
 			else if(computerHand.isEmpty()){
 				System.out.println("Computer Wins!");
