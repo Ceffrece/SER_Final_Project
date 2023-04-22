@@ -265,6 +265,7 @@ public class CrazyEights {
 		for(Card item: hand){
     		displayHand += "+-----+ ";
 		}
+		System.out.println(displayHand);
 	}
 
 // GETS USER INPUT AND REMOVES HAND
