@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class CrazyEights {
 
@@ -78,8 +79,7 @@ public class CrazyEights {
 		System.out.println();
 		System.out.println("\t\t\t\t\t\t\t\t\t Press Enter to Continue");
 
-		Scanner enterToContinue = new Scanner(System.in);
-		enterToContinue.nextLine();
+		enterToStart.nextLine();
 
 		Thread.sleep(2000);
 		System.out.println("\t\t\t\t\t\t _______  _______  _______  _______    _______  _______  _                ");
@@ -112,7 +112,23 @@ public class CrazyEights {
 		System.out.println("\t\t\t\t\t\t\t| '--------------' |            | '--------------' |");
 		System.out.println("\t\t\t\t\t\t\t '----------------'              '----------------' ");
 
-		int gameChoice = enterToStart.nextInt();
+		int gameChoice = 0;
+		boolean choosingGame = true;
+		while(choosingGame){
+			try{
+				gameChoice = enterToStart.nextInt();
+				choosingGame = false;
+			}
+			catch(InputMismatchException ime){
+				System.out.println("Not a correct input. Input an INTEGER. Try again");
+				String dummy = enterToStart.nextLine();
+			}
+			if(gameChoice > 2){
+				System.out.println("Not a valid choice. Please type '1' for Single-Player or '2' for 2-Player.");
+				choosingGame = true;
+			}
+		}
+		
 
 		if(gameChoice == 1){
 			ArrayList<Card> playerHand = new ArrayList<Card>();
@@ -337,7 +353,7 @@ public class CrazyEights {
 						}
 						System.out.println("You cannot play a card. Drawing a card.");
 						Thread.sleep(100);
-						player1Hand.add(deck.dealCard());
+						player2Hand.add(deck.dealCard());
 						for(Card card: player2Hand){
 							if(isCardPlayable(card,faceUp)){
 								playedCardDraw = true;
@@ -415,8 +431,21 @@ public class CrazyEights {
 		while(true){
 			System.out.println("Please pick a card in your hand to play");
 			Scanner scan = new Scanner(System.in);
-			removeIndex = scan.nextInt();
-			playedCard = playerHand.get(removeIndex - 1);
+			playedCard = null;
+			removeIndex = -1;
+			try{
+				removeIndex = scan.nextInt();
+				playedCard = playerHand.get(removeIndex - 1);
+			}
+			catch(InputMismatchException ie){
+				System.out.println("Not a valid card integer.");
+				String dummy = scan.nextLine();
+			}
+			catch(IndexOutOfBoundsException ioobe){
+				System.out.println("Not a card in your hand.");
+				String dummy = scan.nextLine();
+			}
+			
 			if(isCardPlayable(playedCard, faceUp)){
 				break;
 			}
@@ -433,8 +462,18 @@ public class CrazyEights {
 			System.out.println("3. Clubs");
 			System.out.println("4. Spades");
 			Scanner suitChange = new Scanner(System.in);
-			int suitChangeNum = suitChange.nextInt();
-			if(suitChangeNum == 1){
+			int suitChangeNum = 0;
+			try{
+				suitChangeNum = suitChange.nextInt();
+			}
+			catch(InputMismatchException ie){
+				System.out.println("NO. Nice Try, my code won't break");
+			}
+			
+			if(suitChangeNum == 0){
+				//Keep the current suit because they're rebellious
+			}
+			if(suitChangeNum == 1){ 
 				playedCard.setSuit("Hearts");
 			}
 			else if(suitChangeNum == 2){
