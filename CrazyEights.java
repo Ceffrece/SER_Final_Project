@@ -225,7 +225,7 @@ public class CrazyEights {
 							deck = new DeckOfCards();//Puts more cards to be played
 							deck.shuffle();
 						}
-						System.out.println("You cannot play a card. Drawing a card.");
+						System.out.println("CPU cannot play a card. Drawing a card.");
 						Thread.sleep(100);
 						computerHand.add(deck.dealCard());
 						for(Card card: computerHand){
@@ -309,7 +309,7 @@ public class CrazyEights {
 							deck = new DeckOfCards();//Puts more cards to be played
 							deck.shuffle();
 						}
-						System.out.println("You cannot play a card. Drawing a card.");
+						System.out.println(player1 + "cannot play a card. Drawing a card.");
 						Thread.sleep(100);
 						player1Hand.add(deck.dealCard());
 						for(Card card: player1Hand){
@@ -356,7 +356,7 @@ public class CrazyEights {
 							deck = new DeckOfCards();//Puts more cards to be played
 							deck.shuffle();
 						}
-						System.out.println("You cannot play a card. Drawing a card.");
+						System.out.println(player2+ " cannot play a card. Drawing a card.");
 						Thread.sleep(100);
 						player2Hand.add(deck.dealCard());
 						for(Card card: player2Hand){
@@ -392,14 +392,21 @@ public class CrazyEights {
 	
 	public static Card playCardCPU(ArrayList<Card> hand, Card faceUp){
 		Card dummyCard = hand.get(1);
-		for(Card card : hand){
-			if(isCardPlayable(card,faceUp)){
-				hand.remove(card);
-				return card;
+		try {
+			for(Card card : hand){
+				if(isCardPlayable(card,faceUp)){
+					hand.remove(card);
+					return card;
+				}
 			}
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("The CPU's turn was skipped due to an exception");
+		
+
 		}
 		return dummyCard;
 	}
+	
 
 	public static void displayCPUHand(ArrayList<Card> hand){
 		String displayHand = "";
