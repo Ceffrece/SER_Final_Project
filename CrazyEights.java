@@ -1,3 +1,8 @@
+/**
+ * Charlize Aponte and Caden Effrece 
+ * Date: 04/26/23
+ * Description: This code runs and plays the game Crazy Eights in both single player and double player mode  
+ */
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
