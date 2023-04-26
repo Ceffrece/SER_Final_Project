@@ -54,6 +54,34 @@ public class CrazyEights {
 		enterToStart.nextLine();
 
 		Thread.sleep(2000);
+		System.out.println("\t\t\t\t\t           _______            _________ _______    _______  _        _______          ");
+		System.out.println("\t\t\t\t\t |\\     /|(  ___  )|\\     /|  \\__   __/(  ___  )  (  ____ )( \\      (  ___  )|\\     /|");
+		System.out.println("\t\t\t\t\t | )   ( || (   ) || )   ( |     ) (   | (   ) |  | (    )|| (      | (   ) |( \\   / )");
+		System.out.println("\t\t\t\t\t | (___) || |   | || | _ | |     | |   | |   | |  | (____)|| |      | (___) | \\ (_) / ");
+		System.out.println("\t\t\t\t\t |  ___  || |   | || |( )| |     | |   | |   | |  |  _____)| |      |  ___  |  \\   /  ");
+		System.out.println("\t\t\t\t\t | (   ) || |   | || || || |     | |   | |   | |  | (      | |      | (   ) |   ) (  ");
+		System.out.println("\t\t\t\t\t | )   ( || (___) || () () |     | |   | (___) |  | )      | (____/\\| )   ( |   | | ");
+		System.out.println("\t\t\t\t\t |/     \\|(_______)(_______)     )_(   (_______)  |/       (_______/|/     \\|   \\_/   ");
+		System.out.println();
+		System.out.println();
+
+		Thread.sleep(2000);
+		System.out.println("\t\t\t\t Each player is dealt 5 cards at the start of the game and then the rest of the deck is placed face down."); 
+		System.out.println("\t\t\t\t The top card is flipped face up and that is the card the players start the game off of.");   
+		System.out.println("\t\t\t\t Each player can only play one card per turn, and if they cannot play a card, ");
+		System.out.println("\t\t\t\t they can draw from the deck up to three times before their turn is passed."); 
+		System.out.println("\t\t\t\t If an eight is played, the player declares a suit and that is the next suit to be played.");
+		System.out.println("\t\t\t\t The winner of the game is the first person to have no cards left in their hand before anyone else.");
+		System.out.println("\t\t\t\t You are able to play this game as 1 player vs. CPU or 2 players.");
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("\t\t\t\t\t\t\t\t\t Press Enter to Continue");
+
+		Scanner enterToContinue = new Scanner(System.in);
+		enterToContinue.nextLine();
+
+		Thread.sleep(2000);
 		System.out.println("\t\t\t\t\t\t _______  _______  _______  _______    _______  _______  _                ");
 		System.out.println("\t\t\t\t\t\t(  ____ \\(  ___  )(       )(  ____ \\  (       )(  ____ \\( (    /||\\     /|");
 		System.out.println("\t\t\t\t\t\t| (    \\/| (   ) || () () || (    \\/  | () () || (    \\/|  \\  ( || )   ( |");
