@@ -10,6 +10,8 @@ public class DeckOfCards {
    private Card[] deck = new Card[NUMBER_OF_CARDS]; // Card references
    private int currentCard = 0; // index of next Card to be dealt (0-51)
 
+   private int cardsLeft; //How many cards are left in the deck
+
    // constructor fills deck of Cards
    public DeckOfCards() {
       String[] faces = {"A", "2", "3", "4", "5", "6",
@@ -20,7 +22,9 @@ public class DeckOfCards {
       for (int count = 0; count < deck.length; count++) {  
          deck[count] =                                     
             new Card(faces[count % 13], suits[count / 13]);
-      }                                                    
+      }
+      
+      this.cardsLeft = 52;
    } 
 
    // shuffle deck of Cards with one-pass algorithm
@@ -42,6 +46,7 @@ public class DeckOfCards {
 
    // deal one Card
    public Card dealCard() {
+      cardsLeft--; //Reduces number of cards left
       // determine whether Cards remain to be dealt
       if (currentCard < deck.length) {
          return deck[currentCard++]; // return current Card in array
@@ -49,7 +54,11 @@ public class DeckOfCards {
       else {
          return null; // return null to indicate that all Cards were dealt
       } 
-   } 
+   }
+   
+   public boolean isDeckEmpty() {
+      return cardsLeft == 0;
+   }
 } 
 
 

@@ -122,8 +122,35 @@ public class CrazyEights {
 					faceUp = playCard(playerHand, faceUp);
 				}
 				else{
-					System.out.println("You cannot play a card. Drawing a card.");
-					playerHand.add(deck.dealCard());
+					boolean playedCardDraw = false;
+					for(int count = 0; count < 3; count++){
+						//Checks if deck is empty
+						if(deck.isDeckEmpty()){
+							System.out.println("No Cards left in deck... Reshuffling");
+							deck = new DeckOfCards();//Puts more cards to be played
+							deck.shuffle();
+						}
+						System.out.println("You cannot play a card. Drawing a card.");
+						Thread.sleep(100);
+						playerHand.add(deck.dealCard());
+						for(Card card: playerHand){
+							if(isCardPlayable(card,faceUp)){
+								playedCardDraw = true;
+							}
+						}
+						if(playedCardDraw){
+							System.out.println("Face Up Card: ");
+							displayCard(faceUp);
+							CrazyEights.displayHand(playerHand);
+							faceUp = playCard(playerHand, faceUp);
+							break;
+						}
+					}
+				}
+				if(deck.isDeckEmpty()){
+					System.out.println("No Cards left in Deck... Reshuffling");
+					deck = new DeckOfCards();
+					deck.shuffle();
 				}
 				Thread.sleep(1000);
 
@@ -141,8 +168,35 @@ public class CrazyEights {
 					faceUp = playCardCPU(computerHand, faceUp);
 				}
 				else{
-					System.out.println("CPU cannot play a card. Drawing a card.");
-					computerHand.add(deck.dealCard());
+					boolean playedCardDraw = false;
+					for(int count = 0; count < 3; count++){
+						//Checks if deck is empty
+						if(deck.isDeckEmpty()){
+							System.out.println("No Cards left in deck... Reshuffling");
+							deck = new DeckOfCards();//Puts more cards to be played
+							deck.shuffle();
+						}
+						System.out.println("You cannot play a card. Drawing a card.");
+						Thread.sleep(100);
+						computerHand.add(deck.dealCard());
+						for(Card card: computerHand){
+							if(isCardPlayable(card,faceUp)){
+								playedCardDraw = true;
+							}
+						}
+						if(playedCardDraw){
+							System.out.println("Face Up Card: ");
+							displayCard(faceUp);
+							CrazyEights.displayCPUHand(computerHand);
+							faceUp = playCardCPU(computerHand, faceUp);
+							break;
+						}
+					}
+				}
+				if(deck.isDeckEmpty()){
+					System.out.println("No Cards left in deck... Reshuffling");
+					deck = new DeckOfCards();
+					deck.shuffle();
 				}
 			}
 
@@ -198,10 +252,38 @@ public class CrazyEights {
 					faceUp = playCard(player1Hand, faceUp);
 				}
 				else{
-					System.out.println("You cannot play a card. Drawing a card.");
-					player1Hand.add(deck.dealCard());
+					boolean playedCardDraw = false;
+					for(int count = 0; count < 3; count++){
+						//Checks if deck is empty
+						if(deck.isDeckEmpty()){
+							System.out.println("No Cards left in deck... Reshuffling");
+							deck = new DeckOfCards();//Puts more cards to be played
+							deck.shuffle();
+						}
+						System.out.println("You cannot play a card. Drawing a card.");
+						Thread.sleep(100);
+						player1Hand.add(deck.dealCard());
+						for(Card card: player1Hand){
+							if(isCardPlayable(card,faceUp)){
+								playedCardDraw = true;
+							}
+						}
+						if(playedCardDraw){
+							System.out.println("Face Up Card: ");
+							displayCard(faceUp);
+							CrazyEights.displayHand(player1Hand);
+							faceUp = playCard(player1Hand, faceUp);
+							break;
+						}
+					}
 				}
 				Thread.sleep(1000);
+				//Checks if deck is empty
+				if(deck.isDeckEmpty()){
+					System.out.println("No Cards left in deck... Reshuffling");
+					deck = new DeckOfCards();//Puts more cards to be played
+					deck.shuffle();
+				}
 
 				//Player 2 Turn
 				System.out.println(player2 + "'s' Turn!!");
@@ -217,8 +299,36 @@ public class CrazyEights {
 					faceUp = playCard(player2Hand, faceUp);
 				}
 				else{
-					System.out.println("You cannot play a card. Drawing a card.");
-					player2Hand.add(deck.dealCard());
+					boolean playedCardDraw = false;
+					for(int count = 0; count < 3; count++){
+						//Checks if deck is empty
+						if(deck.isDeckEmpty()){
+							System.out.println("No Cards left in deck... Reshuffling");
+							deck = new DeckOfCards();//Puts more cards to be played
+							deck.shuffle();
+						}
+						System.out.println("You cannot play a card. Drawing a card.");
+						Thread.sleep(100);
+						player1Hand.add(deck.dealCard());
+						for(Card card: player2Hand){
+							if(isCardPlayable(card,faceUp)){
+								playedCardDraw = true;
+							}
+						}
+						if(playedCardDraw){
+							System.out.println("Face Up Card: ");
+							displayCard(faceUp);
+							CrazyEights.displayHand(player2Hand);
+							faceUp = playCard(player2Hand, faceUp);
+							break;
+						}
+					}
+				}
+				//Checks if deck is empty
+				if(deck.isDeckEmpty()){
+					System.out.println("No Cards left in deck... Reshuffling");
+					deck = new DeckOfCards();//Puts more cards to be played
+					deck.shuffle();
 				}
 			}
 
