@@ -443,14 +443,18 @@ public class CrazyEights {
 				playedCard = playerHand.get(removeIndex - 1);
 			}
 			catch(InputMismatchException ie){
-				System.out.println("Not a valid card integer.");
+				System.out.println("Not a valid card integer. Skipping your turn!");
 				String dummy = scan.nextLine();
 			}
 			catch(IndexOutOfBoundsException ioobe){
-				System.out.println("Not a card in your hand.");
+				System.out.println("Not a card in your hand. Skipping your turn!");
 				String dummy = scan.nextLine();
 			}
 			
+			if(removeIndex > playerHand.size() || removeIndex == -1){
+				return faceUp;
+			}
+
 			if(isCardPlayable(playedCard, faceUp)){
 				break;
 			}
