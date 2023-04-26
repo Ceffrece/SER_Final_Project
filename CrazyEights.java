@@ -391,7 +391,7 @@ public class CrazyEights {
 	}
 	
 	public static Card playCardCPU(ArrayList<Card> hand, Card faceUp){
-		Card dummyCard = hand.get(1);
+		Card dummyCard = hand.get(0);
 		try {
 			for(Card card : hand){
 				if(isCardPlayable(card,faceUp)){
@@ -401,8 +401,6 @@ public class CrazyEights {
 			}
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("The CPU's turn was skipped due to an exception");
-		
-
 		}
 		return dummyCard;
 	}
