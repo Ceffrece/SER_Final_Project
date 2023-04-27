@@ -58,7 +58,7 @@ public class CrazyEights {
 
 		Scanner enterToStart = new Scanner(System.in);
 		enterToStart.nextLine();
-
+		//Displays how to play the game 
 		Thread.sleep(2000);
 		System.out.println("\t\t\t\t\t           _______            _________ _______    _______  _        _______          ");
 		System.out.println("\t\t\t\t\t |\\     /|(  ___  )|\\     /|  \\__   __/(  ___  )  (  ____ )( \\      (  ___  )|\\     /|");
@@ -70,7 +70,7 @@ public class CrazyEights {
 		System.out.println("\t\t\t\t\t |/     \\|(_______)(_______)     )_(   (_______)  |/       (_______/|/     \\|   \\_/   ");
 		System.out.println();
 		System.out.println();
-
+		//Displays the instructions of the game and when the user finishes reading the instructions
 		Thread.sleep(2000);
 		System.out.println("\t\t\t\t Each player is dealt 5 cards at the start of the game and then the rest of the deck is placed face down."); 
 		System.out.println("\t\t\t\t The top card is flipped face up and that is the card the players start the game off of.");   
@@ -84,8 +84,10 @@ public class CrazyEights {
 		System.out.println();
 		System.out.println("\t\t\t\t\t\t\t\t\t Press Enter to Continue");
 
+		//READS WHEN THE USER HITS ENTER 
 		enterToStart.nextLine();
 
+		//dispplays game menu 
 		Thread.sleep(2000);
 		System.out.println("\t\t\t\t\t\t _______  _______  _______  _______    _______  _______  _                ");
 		System.out.println("\t\t\t\t\t\t(  ____ \\(  ___  )(       )(  ____ \\  (       )(  ____ \\( (    /||\\     /|");
@@ -104,7 +106,7 @@ public class CrazyEights {
 		System.out.println("\t\t\t\t\t(____(____\\____(____\\___)(__)   (__/ \\__/\\____(__\\_)   \\___\\_/\\_\\_)(_(____)  \\_)(_/\\__(____(____)");
 		System.out.println();
 		Thread.sleep(1000);
-		
+		//Displays options of the game mode
 		System.out.println("\t\t\t\t\t\t\t .----------------.             .----------------. ");
 		System.out.println("\t\t\t\t\t\t\t| .--------------. |            | .--------------. |");
 		System.out.println("\t\t\t\t\t\t\t| |     __       | |            | |    _____     | |");
@@ -117,9 +119,11 @@ public class CrazyEights {
 		System.out.println("\t\t\t\t\t\t\t| '--------------' |            | '--------------' |");
 		System.out.println("\t\t\t\t\t\t\t '----------------'              '----------------' ");
 
+		//Reads the user input of the which game mode that they want
 		int gameChoice = 0;
 		boolean choosingGame = true;
 		while(choosingGame){
+			//Try catches to that handle the exceptions if user inputs the wrong input
 			try{
 				gameChoice = enterToStart.nextInt();
 				choosingGame = false;
@@ -134,7 +138,7 @@ public class CrazyEights {
 			}
 		}
 		
-
+		// if user chooses gamemode 1, it starts the single player game 
 		if(gameChoice == 1){
 			ArrayList<Card> playerHand = new ArrayList<Card>();
 			ArrayList<Card> computerHand = new ArrayList<Card>();
@@ -151,6 +155,7 @@ public class CrazyEights {
 			//Current faceUp card 
 			Card faceUp = deck.dealCard();
 
+			// while the player and the computer's card is not empty, the game will run 
 			while(!(playerHand.isEmpty()) && !(computerHand.isEmpty())){
 				boolean playedCard1 = false;
 				boolean playedCard2 = false;
@@ -164,13 +169,17 @@ public class CrazyEights {
 						playedCard1 = true;
 					}
 				}
-				if(playedCard1){
+				//Displays the card that player one puts down 
+				if(playedCard1)
+				{
 					System.out.println("Face Up Card: ");
 					displayCard(faceUp);
 					CrazyEights.displayHand(playerHand);
 					faceUp = playCard(playerHand, faceUp);
 				}
-				else{
+				else
+				{
+					// draws the card for the player 
 					boolean playedCardDraw = false;
 					for(int count = 0; count < 3; count++){
 						//Checks if deck is empty
@@ -187,6 +196,7 @@ public class CrazyEights {
 								playedCardDraw = true;
 							}
 						}
+						//displays the card that player put down if they got a card from drawing 
 						if(playedCardDraw){
 							System.out.println("Face Up Card: ");
 							displayCard(faceUp);
@@ -196,6 +206,7 @@ public class CrazyEights {
 						}
 					}
 				}
+				// checks of deck is empty and reshuffles deck
 				if(deck.isDeckEmpty()){
 					System.out.println("No Cards left in Deck... Reshuffling");
 					deck = new DeckOfCards();
@@ -210,6 +221,7 @@ public class CrazyEights {
 						playedCard2 = true;
 					}
 				}
+				// displays the card that player 2 put down 
 				if(playedCard2){
 					System.out.println("Face Up Card: ");
 					displayCard(faceUp);
@@ -217,6 +229,7 @@ public class CrazyEights {
 					faceUp = playCardCPU(computerHand, faceUp);
 				}
 				else{
+					// draws the card for the player 
 					boolean playedCardDraw = false;
 					for(int count = 0; count < 3; count++){
 						//Checks if deck is empty
@@ -233,6 +246,7 @@ public class CrazyEights {
 								playedCardDraw = true;
 							}
 						}
+						//displays the card that CPU put down if they got a card from drawing 
 						if(playedCardDraw){
 							System.out.println("Face Up Card: ");
 							displayCard(faceUp);
@@ -242,16 +256,18 @@ public class CrazyEights {
 						}
 					}
 				}
+				//Check if deck is empty, generates new deck and resuffles
 				if(deck.isDeckEmpty()){
 					System.out.println("No Cards left in deck... Reshuffling");
 					deck = new DeckOfCards();
 					deck.shuffle();
 				}
 			}
-
+			// if player hand is empty, player wins 
 			if(playerHand.isEmpty()){
 				System.out.println("You Win!");
 			}
+			// if CPU hand is empty computer wins
 			else if(computerHand.isEmpty()){
 				System.out.println("Computer Wins!");
 			}
@@ -404,7 +420,7 @@ public class CrazyEights {
 		}
 		return dummyCard;
 	}
-	
+ 	
 
 	public static void displayCPUHand(ArrayList<Card> hand){
 		String displayHand = "";
