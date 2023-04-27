@@ -14,11 +14,11 @@ public class CrazyEights {
 		if(faceUp.getFace().equals(card.getFace()) || faceUp.getSuit().equals(card.getSuit())){
 			return true;
 		}
-		if(card.getFace().equals("8")){
+		if(card.getFace().equals("8")){ //If it is an eight, it is always playable
 			return true;
 		}
 		else{
-			return false;
+			return false; //if the card doesn't equal the faceUp card in the suit or number, it is not playable
 		} 
 	}
 	public static void main(String[] args) throws InterruptedException{
@@ -44,7 +44,7 @@ public class CrazyEights {
 		System.out.println("\t\t\t(__) (__)\\_) (__)    (__)(__) (__)  (__)(__)  (__)(__) (_/ \\_) (__)    (__)(__)    (__)   (__)_) (__) (__) (__)  (__)(__)      ");
 		System.out.println();
 
-		Thread.sleep(2000);
+		Thread.sleep(2000);//Small delay
 		//Displays the press enter to start
 		System.out.println("\t\t _______ _______ _______  _______ _______    _______ _      ________________ _______   ________________    _______________________ ________________");
 		System.out.println("\t\t(  ____ |  ____ |  ____ \\(  ____ (  ____ \\  (  ____ ( (    /\\__   __(  ____ (  ____ )  \\__   __(  ___  )  (  ____ \\__   __(  ___  |  ____ )__   __/");
@@ -57,7 +57,7 @@ public class CrazyEights {
 		System.out.println();
 
 		Scanner enterToStart = new Scanner(System.in);
-		enterToStart.nextLine();
+		enterToStart.nextLine();//Dummy nextLine read to make the program stop until the user hits enter
 
 		Thread.sleep(2000);
 		System.out.println("\t\t\t\t\t           _______            _________ _______    _______  _        _______          ");
@@ -71,7 +71,7 @@ public class CrazyEights {
 		System.out.println();
 		System.out.println();
 
-		Thread.sleep(2000);
+		Thread.sleep(2000);//Small delay
 		System.out.println("\t\t\t\t Each player is dealt 5 cards at the start of the game and then the rest of the deck is placed face down."); 
 		System.out.println("\t\t\t\t The top card is flipped face up and that is the card the players start the game off of.");   
 		System.out.println("\t\t\t\t Each player can only play one card per turn, and if they cannot play a card, ");
@@ -84,7 +84,7 @@ public class CrazyEights {
 		System.out.println();
 		System.out.println("\t\t\t\t\t\t\t\t\t Press Enter to Continue");
 
-		enterToStart.nextLine();
+		enterToStart.nextLine();//Dummy enter readLine
 
 		Thread.sleep(2000);
 		System.out.println("\t\t\t\t\t\t _______  _______  _______  _______    _______  _______  _                ");
@@ -119,14 +119,14 @@ public class CrazyEights {
 
 		int gameChoice = 0;
 		boolean choosingGame = true;
-		while(choosingGame){
+		while(choosingGame){//Doesn't end the loop until they choose a gamemode
 			try{
 				gameChoice = enterToStart.nextInt();
 				choosingGame = false;
 			}
 			catch(InputMismatchException ime){
 				System.out.println("Not a correct input. Input an INTEGER. Try again");
-				String dummy = enterToStart.nextLine();
+				String dummy = enterToStart.nextLine();//Need this to reset the scanner and allow for a new integer input
 			}
 			if(gameChoice > 2){
 				System.out.println("Not a valid choice. Please type '1' for Single-Player or '2' for 2-Player.");
@@ -134,8 +134,9 @@ public class CrazyEights {
 			}
 		}
 		
-
+		//Single Player Mode
 		if(gameChoice == 1){
+			//Initialize hands
 			ArrayList<Card> playerHand = new ArrayList<Card>();
 			ArrayList<Card> computerHand = new ArrayList<Card>();
 
@@ -151,7 +152,9 @@ public class CrazyEights {
 			//Current faceUp card 
 			Card faceUp = deck.dealCard();
 
+			//Runs game while the player hand and computer hand are both not empty
 			while(!(playerHand.isEmpty()) && !(computerHand.isEmpty())){
+				//Initialize variables that both players didn't play a card
 				boolean playedCard1 = false;
 				boolean playedCard2 = false;
 
@@ -161,18 +164,18 @@ public class CrazyEights {
 				System.out.println("Your Turn!!");
 				for(Card card: playerHand){
 					if(isCardPlayable(card,faceUp)){
-						playedCard1 = true;
+						playedCard1 = true;//If player can play a card in their hand, they will
 					}
 				}
-				if(playedCard1){
+				if(playedCard1){ //If the player can play a card
 					System.out.println("Face Up Card: ");
-					displayCard(faceUp);
-					CrazyEights.displayHand(playerHand);
-					faceUp = playCard(playerHand, faceUp);
+					displayCard(faceUp);//Display the face up card
+					CrazyEights.displayHand(playerHand); //Display the player's hand
+					faceUp = playCard(playerHand, faceUp); //Change the faceUp card to what the player plays
 				}
-				else{
-					boolean playedCardDraw = false;
-					for(int count = 0; count < 3; count++){
+				else{ //If they can't play a card
+					boolean playedCardDraw = false; //Variable for if they can play a card in their hand after they draw
+					for(int count = 0; count < 3; count++){ //Max of drawing 3 times before their turn is over
 						//Checks if deck is empty
 						if(deck.isDeckEmpty()){
 							System.out.println("No Cards left in deck... Reshuffling");
@@ -184,21 +187,22 @@ public class CrazyEights {
 						playerHand.add(deck.dealCard());
 						for(Card card: playerHand){
 							if(isCardPlayable(card,faceUp)){
-								playedCardDraw = true;
+								playedCardDraw = true; //If in the draw sequence they can play a card, let them be able to play a card
 							}
 						}
 						if(playedCardDraw){
+							//Plays card like normally
 							System.out.println("Face Up Card: ");
 							displayCard(faceUp);
 							CrazyEights.displayHand(playerHand);
 							faceUp = playCard(playerHand, faceUp);
-							break;
+							break;//Exits for loop because player played a card
 						}
-					}
-				}
-				if(deck.isDeckEmpty()){
+					}//end for
+				}//end else
+				if(deck.isDeckEmpty()){ //If deck is empty at the end of the turn
 					System.out.println("No Cards left in Deck... Reshuffling");
-					deck = new DeckOfCards();
+					deck = new DeckOfCards();//Adds more cards
 					deck.shuffle();
 				}
 				Thread.sleep(1000);
@@ -207,18 +211,18 @@ public class CrazyEights {
 				System.out.println("CPU Turn!!");
 				for(Card card: computerHand){
 					if(isCardPlayable(card,faceUp)){
-						playedCard2 = true;
+						playedCard2 = true;//If the CPU can play a card in their hand, it will
 					}
 				}
 				if(playedCard2){
 					System.out.println("Face Up Card: ");
 					displayCard(faceUp);
-					CrazyEights.displayCPUHand(computerHand);
-					faceUp = playCardCPU(computerHand, faceUp);
+					CrazyEights.displayCPUHand(computerHand);//DIfferent display for CPU hand because player doensn't know the CPU's cards
+					faceUp = playCardCPU(computerHand, faceUp); //CPU plays first playable card in their hand using this function
 				}
-				else{
+				else{//If the CPU can't play, it enters the draw sequence
 					boolean playedCardDraw = false;
-					for(int count = 0; count < 3; count++){
+					for(int count = 0; count < 3; count++){ //Max 3 draws for the CPU
 						//Checks if deck is empty
 						if(deck.isDeckEmpty()){
 							System.out.println("No Cards left in deck... Reshuffling");
@@ -234,20 +238,21 @@ public class CrazyEights {
 							}
 						}
 						if(playedCardDraw){
+							//If the CPU can play a card in the draw sequence, it will play normally
 							System.out.println("Face Up Card: ");
 							displayCard(faceUp);
 							CrazyEights.displayCPUHand(computerHand);
 							faceUp = playCardCPU(computerHand, faceUp);
-							break;
+							break;//Ends the loop because the CPU played a card
 						}
-					}
-				}
+					}//end for
+				}//end else
 				if(deck.isDeckEmpty()){
 					System.out.println("No Cards left in deck... Reshuffling");
 					deck = new DeckOfCards();
 					deck.shuffle();
 				}
-			}
+			}//End while loop (Game)
 
 			if(playerHand.isEmpty()){
 				System.out.println("You Win!");
@@ -258,6 +263,9 @@ public class CrazyEights {
 
 		}
 		else{
+
+			//2 Player
+
 			//Initializes hands as empty ArrayLists
 			ArrayList<Card> player1Hand = new ArrayList<Card>();
 			ArrayList<Card> player2Hand = new ArrayList<Card>();
@@ -291,25 +299,25 @@ public class CrazyEights {
 				System.out.println(player1 + "'s' Turn!!");
 				for(Card card: player1Hand){
 					if(isCardPlayable(card,faceUp)){
-						playedCard1 = true;
+						playedCard1 = true;//If there is a playable card in player 1's hand, they will play it
 					}
 				}
-				if(playedCard1){
+				if(playedCard1){//Plays a card for p1 if they can
 					System.out.println("Face Up Card: ");
-					displayCard(faceUp);
-					CrazyEights.displayHand(player1Hand);
-					faceUp = playCard(player1Hand, faceUp);
+					displayCard(faceUp);//displays face up card
+					CrazyEights.displayHand(player1Hand); //Displays p1 hand
+					faceUp = playCard(player1Hand, faceUp); //sets faceUp card to the card p1 played
 				}
-				else{
-					boolean playedCardDraw = false;
-					for(int count = 0; count < 3; count++){
+				else{//Draw sequence
+					boolean playedCardDraw = false; //Variable for if p1 can play during the draw sequence
+					for(int count = 0; count < 3; count++){//Max 3 draws
 						//Checks if deck is empty
 						if(deck.isDeckEmpty()){
 							System.out.println("No Cards left in deck... Reshuffling");
 							deck = new DeckOfCards();//Puts more cards to be played
 							deck.shuffle();
 						}
-						System.out.println(player1 + "cannot play a card. Drawing a card.");
+						System.out.println(player1 + " cannot play a card. Drawing a card.");
 						Thread.sleep(100);
 						player1Hand.add(deck.dealCard());
 						for(Card card: player1Hand){
@@ -317,14 +325,19 @@ public class CrazyEights {
 								playedCardDraw = true;
 							}
 						}
-						if(playedCardDraw){
+						if(playedCardDraw){//If p1 can play a card during the draw sequence
+							//Plays card normally
 							System.out.println("Face Up Card: ");
 							displayCard(faceUp);
 							CrazyEights.displayHand(player1Hand);
 							faceUp = playCard(player1Hand, faceUp);
-							break;
+							break;//Exits for loop because p1 played a card
 						}
-					}
+					}//end for
+				}//end else
+
+				if(player1Hand.isEmpty()){
+					break;//Aborts game early if p1 wins
 				}
 				Thread.sleep(1000);
 				//Checks if deck is empty
@@ -341,22 +354,22 @@ public class CrazyEights {
 						playedCard2 = true;
 					}
 				}
-				if(playedCard2){
+				if(playedCard2){//If p2 can play a card
 					System.out.println("Face Up Card: ");
-					displayCard(faceUp);
-					CrazyEights.displayHand(player2Hand);
-					faceUp = playCard(player2Hand, faceUp);
+					displayCard(faceUp);//Display face up card
+					CrazyEights.displayHand(player2Hand);//display p2 hand
+					faceUp = playCard(player2Hand, faceUp);//change face up card to the card p2 played
 				}
-				else{
+				else{//Draw sequence
 					boolean playedCardDraw = false;
-					for(int count = 0; count < 3; count++){
+					for(int count = 0; count < 3; count++){//max 3 draws
 						//Checks if deck is empty
 						if(deck.isDeckEmpty()){
 							System.out.println("No Cards left in deck... Reshuffling");
 							deck = new DeckOfCards();//Puts more cards to be played
 							deck.shuffle();
 						}
-						System.out.println(player2+ " cannot play a card. Drawing a card.");
+						System.out.println(player2 + " cannot play a card. Drawing a card.");
 						Thread.sleep(100);
 						player2Hand.add(deck.dealCard());
 						for(Card card: player2Hand){
@@ -364,31 +377,36 @@ public class CrazyEights {
 								playedCardDraw = true;
 							}
 						}
-						if(playedCardDraw){
+						if(playedCardDraw){//if p2 can play a card during the draw sequence
+							//Plays card normally
 							System.out.println("Face Up Card: ");
 							displayCard(faceUp);
 							CrazyEights.displayHand(player2Hand);
 							faceUp = playCard(player2Hand, faceUp);
-							break;
+							break;//exits for loop because p2 played a card
 						}
-					}
-				}
+					}//end for
+				}//end else
+
 				//Checks if deck is empty
 				if(deck.isDeckEmpty()){
 					System.out.println("No Cards left in deck... Reshuffling");
 					deck = new DeckOfCards();//Puts more cards to be played
 					deck.shuffle();
 				}
-			}
+			}//end while (game)
 
-			if(player1Hand.isEmpty()){
-				System.out.println(player1 + "Wins!");
+			if(player1Hand.isEmpty()){//if p1 hand is empty, p1 wins
+				System.out.println(player1 + " Wins!");
 			}
-			else if(player2Hand.isEmpty()){
+			else if(player2Hand.isEmpty()){ //otherwidse p2 wins
 				System.out.println(player2 + " Wins!");
 			}
-		}
-	}
+			else{//Not possible, but figured i'd add it anyways
+				System.out.println("Draw");
+			}
+		}//End else (2 player gamemode)
+	}//end main
 	
 	public static Card playCardCPU(ArrayList<Card> hand, Card faceUp){
 		Card dummyCard = hand.get(0);
