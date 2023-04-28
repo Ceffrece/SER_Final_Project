@@ -6,6 +6,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.io.IOException;
 
 public class CrazyEights {
 
@@ -21,7 +22,7 @@ public class CrazyEights {
 			return false; //if the card doesn't equal the faceUp card in the suit or number, it is not playable
 		} 
 	}
-	public static void main(String[] args) throws InterruptedException{
+	public static void main(String[] args) throws InterruptedException, IOException{
 		// display start game 
 		//Displays the welcome message:
 		System.out.println("\t\t\t              (           )    *                    )          (               )     )       (              )        (     ____ ");
@@ -58,6 +59,7 @@ public class CrazyEights {
 
 		Scanner enterToStart = new Scanner(System.in);
 		enterToStart.nextLine();//Dummy nextLine read to make the program stop until the user hits enter
+		clearConsole();
 		//Displays how to play the game 
 
 		Thread.sleep(2000);
@@ -88,6 +90,7 @@ public class CrazyEights {
 		System.out.println("\t\t\t\t\t\t\t\t\t Press Enter to Continue");
 
 		enterToStart.nextLine();//Dummy enter readLine
+		clearConsole();
 
 		//dispplays game menu 
 		Thread.sleep(2000);
@@ -139,6 +142,7 @@ public class CrazyEights {
 				choosingGame = true;
 			}
 		}
+		clearConsole();
 		
 		//Single Player Mode
 		if(gameChoice == 1){
@@ -212,6 +216,8 @@ public class CrazyEights {
 					deck = new DeckOfCards();//Adds more cards
 					deck.shuffle();
 				}
+
+				clearConsole();
 				Thread.sleep(1000);
 
 				//Computer Turn
@@ -261,6 +267,7 @@ public class CrazyEights {
 					deck = new DeckOfCards();
 					deck.shuffle();
 				}
+				clearConsole();
 			}//End while loop (Game)
 			
 			// if player hand is empty, player wins 
@@ -299,6 +306,8 @@ public class CrazyEights {
 			String player1 = nameIn.nextLine();
 			System.out.println("Input Player 2's Name: ");
 			String player2 = nameIn.nextLine();
+
+			clearConsole();
 
 			//Game loop that makes the game run
 			while(!(player1Hand.isEmpty()) && !(player2Hand.isEmpty())){
@@ -350,6 +359,7 @@ public class CrazyEights {
 				if(player1Hand.isEmpty()){
 					break;//Aborts game early if p1 wins
 				}
+				clearConsole();
 				Thread.sleep(1000);
 				//Checks if deck is empty
 				if(deck.isDeckEmpty()){
@@ -405,7 +415,10 @@ public class CrazyEights {
 					deck = new DeckOfCards();//Puts more cards to be played
 					deck.shuffle();
 				}
+				clearConsole();
 			}//end while (game)
+
+			clearConsole();
 
 			if(player1Hand.isEmpty()){//if p1 hand is empty, p1 wins
 				System.out.println(player1 + " Wins!");
@@ -595,4 +608,7 @@ public class CrazyEights {
 		}
 		System.out.println(displayHand);
 	}
+	public static void clearConsole() throws IOException, InterruptedException {
+		new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
+	}  
 }
