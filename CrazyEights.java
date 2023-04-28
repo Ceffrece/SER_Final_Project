@@ -609,6 +609,6 @@ public class CrazyEights {
 		System.out.println(displayHand);
 	}
 	public static void clearConsole() throws IOException, InterruptedException {
-		new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
+		//new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();  
 	}  
 }
