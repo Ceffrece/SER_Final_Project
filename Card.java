@@ -33,6 +33,8 @@ public class Card {
           default:
               return "";
       } /* 
+      Only uncomment this if your device is running less than Java 19. You will also need to comment out the switch statement and change
+      the return type of the function to 'char'.
       char ch = ' ';
       if(this.suit.equals("Hearts")){
         ch = 3;
